@@ -76,15 +76,15 @@ class _HomeScreenState extends State<HomeScreen> {
           const Text('Your workspace', style: TextStyle(fontSize: 21, fontWeight: FontWeight.w800, color: ink)),
           const SizedBox(height: 14),
           Row(children: [
-            Expanded(child: _quickCard(Icons.auto_awesome_rounded, 'AI Studio', 'Create concepts')),
+            _quickCard(Icons.auto_awesome_rounded, 'AI Studio', 'Create concepts'),
             const SizedBox(width: 12),
-            Expanded(child: _quickCard(Icons.view_timeline_rounded, 'Timeline', 'Edit your video')),
+            _quickCard(Icons.view_timeline_rounded, 'Timeline', 'Edit your video'),
           ]),
           const SizedBox(height: 12),
           Row(children: [
-            Expanded(child: _quickCard(Icons.folder_open_rounded, 'My Projects', 'Continue editing')),
+            _quickCard(Icons.folder_open_rounded, 'My Projects', 'Continue editing'),
             const SizedBox(width: 12),
-            Expanded(child: _quickCard(Icons.palette_outlined, 'Brand Kit', 'Your brand assets')),
+            _quickCard(Icons.palette_outlined, 'Brand Kit', 'Your brand assets'),
           ]),
           const SizedBox(height: 28),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
