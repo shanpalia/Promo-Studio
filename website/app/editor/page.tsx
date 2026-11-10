@@ -1,4 +1,5 @@
 "use client";
+import "./editor.css";
 
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
