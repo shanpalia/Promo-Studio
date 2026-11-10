@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 const tools = [
   { icon: "✦", title: "AI Video Studio", text: "Turn a simple idea into a promotional video concept." },
@@ -16,7 +17,7 @@ export default function Home() {
       <button className="avatar">Sign in</button>
     </header>
     <section className="hero">
-      <div><div className="eyebrow">Create · Edit · Promote</div><h1>Make videos that make your brand <span style={{color:"#0e9f78"}}>stand out.</span></h1><p>Everything you need to create polished promotional videos for your business, products and social media — all in one studio.</p><div className="actions"><button className="primary" onClick={()=>document.getElementById("templates")?.scrollIntoView({behavior:"smooth"})}>＋ Create a video</button><button className="secondary" onClick={()=>setTab(tab==="For you"?"Trending":"For you")}>Explore templates</button></div></div>
+      <div><div className="eyebrow">Create · Edit · Promote</div><h1>Make videos that make your brand <span style={{color:"#0e9f78"}}>stand out.</span></h1><p>Everything you need to create polished promotional videos for your business, products and social media — all in one studio.</p><div className="actions"><Link className="primary" href="/editor" style={{textDecoration:"none"}}>＋ Create a video</Link><button className="secondary" onClick={()=>setTab(tab==="For you"?"Trending":"For you")}>Explore templates</button></div></div>
       <div className="preview"><div className="video-card"><div className="video-art"><span>✦</span><div className="play">▶</div></div><h3>Make it memorable.</h3><small>YOUR BRAND · YOUR STORY</small></div></div>
     </section>
     <section id="features"><div className="section-head"><h2>Your creative workspace</h2><span>Everything in one place</span></div><div className="grid">{tools.map(t=><article className="tile" key={t.title}><div className="tile-icon">{t.icon}</div><h3>{t.title}</h3><p>{t.text}</p></article>)}</div></section>
