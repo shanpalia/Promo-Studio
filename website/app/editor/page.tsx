@@ -55,8 +55,9 @@ export default function EditorPage() {
   const [duration, setDuration] = useState(5);
   const [activeTemplate, setActiveTemplate] = useState("reel");
   const [templateCategory, setTemplateCategory] = useState("ALL");
+  const [templateSearch, setTemplateSearch] = useState("");
   const categories = ["ALL", "PRODUCT", "BUSINESS", "OFFER", "SOCIAL", "EVENT", "FOOD", "FESTIVAL", "TECH"];
-  const visibleTemplates = promoTemplates.filter((template) => templateCategory === "ALL" || template.category === templateCategory);
+  const visibleTemplates = promoTemplates.filter((template) => (templateCategory === "ALL" || template.category === templateCategory) && (template.name + " " + template.description + " " + template.category).toLowerCase().includes(templateSearch.toLowerCase().trim()));
   const videoRef = useRef<HTMLVideoElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -209,7 +210,7 @@ export default function EditorPage() {
 
   return <main className="editorShell">
     <header className="editorTop">
-      <Link href="/" className="editorBrand"><span className="editorMark">PS</span><span>Promo Studio</span></Link>
+      <Link href="/" className="editorBrand"><span className="editorMark">PS</span><span className="brandWords"><strong>Promo Studio</strong><small>BY PALIAAPK HUB</small></span></Link>
       <div className="editorTopRight"><span className="saveHint">Local project · Your files stay on this device</span><button className="exportBtn" onClick={exportVideo} disabled={exporting || !selected}>{exporting ? "Exporting…" : "Export video ↓"}</button></div>
     </header>
     <div className="editorLayout">
@@ -226,11 +227,13 @@ export default function EditorPage() {
         <div className="panelFoot">Promo Studio · By PaliaAPK HUB</div>
       </aside>
       <section className="workArea">
-        <div className="workHeading"><div><span className="panelKicker">VIDEO EDITOR</span><h1>Untitled project</h1></div><span className="localBadge">● Local editing</span></div>
+        <div className="workHeading"><div><span className="panelKicker">YOUR CREATIVE WORKSPACE</span><h1>Let’s create something memorable.</h1><p className="workSubheading">Choose a professionally styled starting point, then make it yours.</p></div><span className="localBadge">● Local editing</span></div>
+        <section className="templateHero"><div className="templateHeroCopy"><span className="templateHeroEyebrow">✦ THE PROMO STUDIO COLLECTION</span><h2>Make your next big idea <em>stand out.</em></h2><p>Ready-made designs for brands, businesses and creators. Pick a template and start creating in seconds.</p><div className="templateHeroMeta"><span>✦ {promoTemplates.length} curated templates</span><span>▣ 3 canvas formats</span><span>◉ Made for social & business</span></div></div><div className="templateHeroArt"><div className="heroMiniCard heroMiniBack">YOUR BRAND<br/><strong>MAKE IT HAPPEN</strong></div><div className="heroMiniCard heroMiniFront"><span>FEATURED DESIGN</span><strong>CREATE<br/>YOUR STORY.</strong><small>PROMO STUDIO · PALIAAPK HUB</small></div><span className="heroSparkle">✦</span></div></section>
         <section className="templatePicker">
-          <div className="templatePickerHead"><div><span className="panelKicker">QUICK START</span><h2>Choose a video template</h2><p>Pick a style to set up your project instantly</p></div><span className="templateCount">{promoTemplates.length} ready-made styles</span></div>
+          <div className="templatePickerHead"><div><span className="panelKicker">TEMPLATE LIBRARY</span><h2>Find your perfect starting point</h2><p>Explore the collection and select a design to customise</p></div><label className="templateSearch"><span>⌕</span><input value={templateSearch} onChange={(event) => setTemplateSearch(event.target.value)} placeholder="Search templates..." aria-label="Search templates" /></label></div>
+          <div className="templateLibraryMeta"><span>{visibleTemplates.length} templates <b>·</b> {templateCategory === "ALL" ? "All categories" : templateCategory[0] + templateCategory.slice(1).toLowerCase()}</span><span>SELECT A DESIGN TO BEGIN <i>↘</i></span></div>
           <div className="templateCategories">{categories.map((category) => <button key={category} className={templateCategory === category ? "categoryChip activeCategory" : "categoryChip"} onClick={() => setTemplateCategory(category)}>{category === "ALL" ? "All templates" : category[0] + category.slice(1).toLowerCase()}</button>)}</div>
-          <div className="templateGrid">{visibleTemplates.map((template) => <button key={template.id} className={"templateCard " + (activeTemplate === template.id ? "selectedTemplate" : "")} onClick={() => applyTemplate(template)}><span className="templateArtwork" style={{ background: template.background }}><span className="templateArtworkTag">{template.category}</span><strong>{template.title}</strong><small>YOUR BRAND</small></span><span className="templateCardInfo"><strong>{template.name}</strong><small>{template.description} · {template.ratio}</small></span>{activeTemplate === template.id && <span className="templateCheck">✓ Selected</span>}</button>)}</div>
+          <div className="templateGrid">{visibleTemplates.map((template, index) => <button key={template.id} className={"templateCard " + (activeTemplate === template.id ? "selectedTemplate" : "")} onClick={() => applyTemplate(template)}><span className="templateArtwork" style={{ background: template.background }}><span className="templateArtworkTag">{template.category}</span><strong>{template.title}</strong><small>YOUR BRAND</small><span className="artworkIndex">{String(index + 1).padStart(2, "0")}</span></span><span className="templateCardInfo"><strong>{template.name}</strong><small>{template.description}</small><span className="templateCardFormat">{template.ratio} <b>·</b> {template.duration}s</span></span>{activeTemplate === template.id && <span className="templateCheck">✓ Selected</span>}</button>)}</div>{visibleTemplates.length === 0 && <div className="noTemplates"><strong>No templates found</strong><span>Try another search or choose a different category.</span></div>}
         </section>
         <div className="stage">
           <div className={"previewFrame ratio" + ratio.replace(":", "-")}>
