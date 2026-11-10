@@ -12,7 +12,30 @@ const promoTemplates: PromoTemplate[] = [
   { id: "sale", name: "Sale & Offer", category: "OFFER", title: "MEGA SALE · UP TO 50% OFF", ratio: "9:16", duration: 10, accent: "#ffe2e2", background: "linear-gradient(145deg,#ff8a7a,#c73551 58%,#581d42)", description: "High-impact offer" },
   { id: "reel", name: "Social Media Reel", category: "SOCIAL", title: "Stop Scrolling. Watch This!", ratio: "9:16", duration: 15, accent: "#e7ddff", background: "linear-gradient(145deg,#bda5ff,#6654a5 55%,#272443)", description: "Vertical creator style" },
   { id: "event", name: "Event Invitation", category: "EVENT", title: "You Are Invited!", ratio: "1:1", duration: 10, accent: "#ffe8c8", background: "linear-gradient(145deg,#e9c38e,#a56b55 55%,#473447)", description: "Elegant announcement" },
-  { id: "food", name: "Food & Restaurant", category: "FOOD", title: "Fresh Taste. Great Moments.", ratio: "1:1", duration: 10, accent: "#e4f4c9", background: "linear-gradient(145deg,#d8a15e,#7c984b 55%,#314a34)", description: "Appetising food promo" }
+  { id: "food", name: "Food & Restaurant", category: "FOOD", title: "Fresh Taste. Great Moments.", ratio: "1:1", duration: 10, accent: "#e4f4c9", background: "linear-gradient(145deg,#d8a15e,#7c984b 55%,#314a34)", description: "Appetising food promo" },
+  { id: "fashion", name: "Fashion & Boutique", category: "PRODUCT", title: "Wear Your Confidence", ratio: "9:16", duration: 15, accent: "#f8dce8", background: "linear-gradient(145deg,#edb4c9,#a34e76 55%,#40243b)", description: "Style and collection showcase" },
+  { id: "beauty", name: "Beauty & Salon", category: "BUSINESS", title: "Your Glow Starts Here", ratio: "9:16", duration: 15, accent: "#ffe0ec", background: "linear-gradient(145deg,#f7b6cb,#bd6c91 55%,#633b59)", description: "Beauty service promotion" },
+  { id: "realestate", name: "Real Estate", category: "BUSINESS", title: "Find Your Dream Home", ratio: "16:9", duration: 15, accent: "#e0f0ff", background: "linear-gradient(145deg,#9fc9e8,#477c9b 55%,#233b50)", description: "Property listing showcase" },
+  { id: "app", name: "App & Website", category: "TECH", title: "Smarter. Faster. Better.", ratio: "9:16", duration: 15, accent: "#d8f7ff", background: "linear-gradient(145deg,#73d7d4,#367eaa 55%,#25345c)", description: "App launch and feature demo" },
+  { id: "tech", name: "Tech Product", category: "TECH", title: "Innovation in Your Hands", ratio: "16:9", duration: 15, accent: "#d8e8ff", background: "linear-gradient(145deg,#91b8f4,#4a5e9e 55%,#202747)", description: "Gadget and technology reveal" },
+  { id: "youtube", name: "YouTube Intro", category: "SOCIAL", title: "Welcome to My Channel", ratio: "16:9", duration: 10, accent: "#ffe0df", background: "linear-gradient(145deg,#ff9b8e,#d14a50 55%,#522638)", description: "Channel opener and branding" },
+  { id: "story", name: "Instagram Story", category: "SOCIAL", title: "A Little Update for You", ratio: "9:16", duration: 10, accent: "#f1e4ff", background: "linear-gradient(145deg,#d7a9ff,#8660b7 55%,#382d59)", description: "Story announcement layout" },
+  { id: "festival", name: "Festival Greeting", category: "FESTIVAL", title: "Wishing You Joy & Happiness", ratio: "9:16", duration: 10, accent: "#ffebc4", background: "linear-gradient(145deg,#f3bd68,#bd7545 55%,#58334a)", description: "Festive wishes and greetings" },
+  { id: "eid", name: "Eid Greeting", category: "FESTIVAL", title: "Eid Mubarak", ratio: "1:1", duration: 10, accent: "#e2f5d8", background: "linear-gradient(145deg,#a6d9a9,#43866f 55%,#1d4544)", description: "Elegant festive greeting" },
+  { id: "diwali", name: "Diwali Greeting", category: "FESTIVAL", title: "Light Up Every Moment", ratio: "1:1", duration: 10, accent: "#ffe5b0", background: "linear-gradient(145deg,#ffc36d,#d36b38 55%,#582d3d)", description: "Festival of lights design" },
+  { id: "wedding", name: "Wedding Invitation", category: "EVENT", title: "Together Forever", ratio: "9:16", duration: 15, accent: "#ffe9d8", background: "linear-gradient(145deg,#e8c5a7,#aa7772 55%,#55404c)", description: "Romantic invitation video" },
+  { id: "birthday", name: "Birthday Wishes", category: "EVENT", title: "Make a Wish!", ratio: "1:1", duration: 10, accent: "#ffe2ef", background: "linear-gradient(145deg,#f5a8c9,#9d75c7 55%,#3c426e)", description: "Birthday celebration card" },
+  { id: "music", name: "Music Promotion", category: "SOCIAL", title: "Feel the Beat", ratio: "9:16", duration: 15, accent: "#e7ddff", background: "linear-gradient(145deg,#ad9bff,#5c4d9d 55%,#201f39)", description: "Track and artist promo" },
+  { id: "education", name: "Education & Course", category: "BUSINESS", title: "Learn Skills. Build Your Future.", ratio: "16:9", duration: 15, accent: "#dff4ff", background: "linear-gradient(145deg,#8bc9e8,#417fa2 55%,#24465b)", description: "Course and coaching ad" },
+  { id: "fitness", name: "Gym & Fitness", category: "BUSINESS", title: "Stronger Every Day", ratio: "9:16", duration: 15, accent: "#e2f5d8", background: "linear-gradient(145deg,#9fcb86,#4b7951 55%,#233c34)", description: "Fitness and gym campaign" },
+  { id: "travel", name: "Travel & Tourism", category: "SOCIAL", title: "Your Next Adventure Awaits", ratio: "16:9", duration: 15, accent: "#d8f5f3", background: "linear-gradient(145deg,#8bd6cb,#397f91 55%,#25404f)", description: "Destination highlight reel" },
+  { id: "restaurant", name: "Restaurant Menu", category: "FOOD", title: "Delicious Deals Just for You", ratio: "9:16", duration: 10, accent: "#ffe4c4", background: "linear-gradient(145deg,#f0b66f,#bc603e 55%,#542d29)", description: "Menu and special dishes" },
+  { id: "bakery", name: "Bakery & Cafe", category: "FOOD", title: "Baked Fresh Every Day", ratio: "1:1", duration: 10, accent: "#f9e7cf", background: "linear-gradient(145deg,#e5bd8d,#a97954 55%,#4b3a35)", description: "Fresh bakery and cafe promo" },
+  { id: "discount", name: "Flash Discount", category: "OFFER", title: "LIMITED TIME · SHOP NOW", ratio: "9:16", duration: 10, accent: "#ffe0df", background: "linear-gradient(145deg,#ff9c7e,#d34848 55%,#60273c)", description: "Urgency-led discount offer" },
+  { id: "newyear", name: "New Year Offer", category: "FESTIVAL", title: "New Year. New Beginnings.", ratio: "1:1", duration: 10, accent: "#fff0c9", background: "linear-gradient(145deg,#f4d48a,#a87b59 55%,#39435b)", description: "Seasonal campaign greeting" },
+  { id: "testimonial", name: "Customer Testimonial", category: "BUSINESS", title: "Loved by Our Customers", ratio: "16:9", duration: 15, accent: "#e0f8ed", background: "linear-gradient(145deg,#9ad8bd,#438c79 55%,#23483f)", description: "Review and trust builder" },
+  { id: "sale-square", name: "Square Sale Post", category: "OFFER", title: "SPECIAL PRICE · TODAY ONLY", ratio: "1:1", duration: 10, accent: "#ffe5d8", background: "linear-gradient(145deg,#ffb17c,#d45b50 55%,#62334a)", description: "Square social offer creative" },
+  { id: "portfolio", name: "Creator Portfolio", category: "SOCIAL", title: "This Is My Creative World", ratio: "16:9", duration: 15, accent: "#e8e5ff", background: "linear-gradient(145deg,#b3b0ee,#7166a9 55%,#34304c)", description: "Showreel and personal brand" }
 ];
 
 const formatTime = (seconds: number) => {
@@ -29,7 +52,11 @@ export default function EditorPage() {
   const [ratio, setRatio] = useState("9:16");
   const [status, setStatus] = useState("Import media to start your first project");
   const [exporting, setExporting] = useState(false);
-  const [duration, setDuration] = useState(5);\n  const [activeTemplate, setActiveTemplate] = useState("reel");
+  const [duration, setDuration] = useState(5);
+  const [activeTemplate, setActiveTemplate] = useState("reel");
+  const [templateCategory, setTemplateCategory] = useState("ALL");
+  const categories = ["ALL", "PRODUCT", "BUSINESS", "OFFER", "SOCIAL", "EVENT", "FOOD", "FESTIVAL", "TECH"];
+  const visibleTemplates = promoTemplates.filter((template) => templateCategory === "ALL" || template.category === templateCategory);
   const videoRef = useRef<HTMLVideoElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -177,7 +204,8 @@ export default function EditorPage() {
     }
   };
 
-  const audioItem = items.find((item) => item.kind === "audio");\n  const applyTemplate = (template: PromoTemplate) => { setActiveTemplate(template.id); setTitle(template.title); setRatio(template.ratio); setDuration(template.duration); setStatus(template.name + " template selected. Import your own media to personalise it."); };
+  const audioItem = items.find((item) => item.kind === "audio");
+  const applyTemplate = (template: PromoTemplate) => { setActiveTemplate(template.id); setTitle(template.title); setRatio(template.ratio); setDuration(template.duration); setStatus(template.name + " template selected. Import your own media to personalise it."); };
 
   return <main className="editorShell">
     <header className="editorTop">
@@ -199,7 +227,12 @@ export default function EditorPage() {
       </aside>
       <section className="workArea">
         <div className="workHeading"><div><span className="panelKicker">VIDEO EDITOR</span><h1>Untitled project</h1></div><span className="localBadge">● Local editing</span></div>
-        <section className="templatePicker">\n          <div className="templatePickerHead"><div><span className="panelKicker">QUICK START</span><h2>Choose a video template</h2><p>Pick a style to set up your project instantly</p></div><span className="templateCount">6 ready-made styles</span></div>\n          <div className="templateGrid">{promoTemplates.map((template) => <button key={template.id} className={"templateCard " + (activeTemplate === template.id ? "selectedTemplate" : "")} onClick={() => applyTemplate(template)}><span className="templateArtwork" style={{ background: template.background }}><span className="templateArtworkTag">{template.category}</span><strong>{template.title}</strong><small>YOUR BRAND</small></span><span className="templateCardInfo"><strong>{template.name}</strong><small>{template.description} · {template.ratio}</small></span>{activeTemplate === template.id && <span className="templateCheck">✓ Selected</span>}</button>)}</div>\n        </section>\n        <div className="stage">
+        <section className="templatePicker">
+          <div className="templatePickerHead"><div><span className="panelKicker">QUICK START</span><h2>Choose a video template</h2><p>Pick a style to set up your project instantly</p></div><span className="templateCount">{promoTemplates.length} ready-made styles</span></div>
+          <div className="templateCategories">{categories.map((category) => <button key={category} className={templateCategory === category ? "categoryChip activeCategory" : "categoryChip"} onClick={() => setTemplateCategory(category)}>{category === "ALL" ? "All templates" : category[0] + category.slice(1).toLowerCase()}</button>)}</div>
+          <div className="templateGrid">{visibleTemplates.map((template) => <button key={template.id} className={"templateCard " + (activeTemplate === template.id ? "selectedTemplate" : "")} onClick={() => applyTemplate(template)}><span className="templateArtwork" style={{ background: template.background }}><span className="templateArtworkTag">{template.category}</span><strong>{template.title}</strong><small>YOUR BRAND</small></span><span className="templateCardInfo"><strong>{template.name}</strong><small>{template.description} · {template.ratio}</small></span>{activeTemplate === template.id && <span className="templateCheck">✓ Selected</span>}</button>)}</div>
+        </section>
+        <div className="stage">
           <div className={"previewFrame ratio" + ratio.replace(":", "-")}>
             {selected?.kind === "video" ? <video ref={videoRef} key={selected.id} src={selected.url} controls playsInline /> : selected?.kind === "image" ? <img ref={imageRef} key={selected.id} src={selected.url} alt="Selected media preview" /> : <div className="emptyStage"><div className="emptyPlay">▶</div><strong>Your preview appears here</strong><span>Import a video or image to begin</span><button onClick={() => fileInputRef.current?.click()}>＋ Import media</button></div>}
             {selected && <div className={"titleOverlay templateTitle " + "title-" + activeTemplate}>{title}</div>}
