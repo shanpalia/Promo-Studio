@@ -5,6 +5,15 @@ import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 
 type MediaItem = { id: string; file: File; url: string; kind: "video" | "image" | "audio"; duration: number };
+type PromoTemplate = { id: string; name: string; category: string; title: string; ratio: string; duration: number; accent: string; background: string; description: string };
+const promoTemplates: PromoTemplate[] = [
+  { id: "product", name: "Product Launch", category: "PRODUCT", title: "Meet Your New Favourite", ratio: "9:16", duration: 10, accent: "#fff1d6", background: "linear-gradient(145deg,#f1b76c,#b65c48 55%,#243d35)", description: "Bold product reveal" },
+  { id: "business", name: "Business Promo", category: "BUSINESS", title: "Your Trusted Local Partner", ratio: "16:9", duration: 15, accent: "#d7ffe9", background: "linear-gradient(145deg,#b5e8d0,#4e947c 55%,#1e493e)", description: "Clean professional look" },
+  { id: "sale", name: "Sale & Offer", category: "OFFER", title: "MEGA SALE · UP TO 50% OFF", ratio: "9:16", duration: 10, accent: "#ffe2e2", background: "linear-gradient(145deg,#ff8a7a,#c73551 58%,#581d42)", description: "High-impact offer" },
+  { id: "reel", name: "Social Media Reel", category: "SOCIAL", title: "Stop Scrolling. Watch This!", ratio: "9:16", duration: 15, accent: "#e7ddff", background: "linear-gradient(145deg,#bda5ff,#6654a5 55%,#272443)", description: "Vertical creator style" },
+  { id: "event", name: "Event Invitation", category: "EVENT", title: "You Are Invited!", ratio: "1:1", duration: 10, accent: "#ffe8c8", background: "linear-gradient(145deg,#e9c38e,#a56b55 55%,#473447)", description: "Elegant announcement" },
+  { id: "food", name: "Food & Restaurant", category: "FOOD", title: "Fresh Taste. Great Moments.", ratio: "1:1", duration: 10, accent: "#e4f4c9", background: "linear-gradient(145deg,#d8a15e,#7c984b 55%,#314a34)", description: "Appetising food promo" }
+];
 
 const formatTime = (seconds: number) => {
   if (!Number.isFinite(seconds)) return "00:00";
@@ -20,7 +29,7 @@ export default function EditorPage() {
   const [ratio, setRatio] = useState("9:16");
   const [status, setStatus] = useState("Import media to start your first project");
   const [exporting, setExporting] = useState(false);
-  const [duration, setDuration] = useState(5);
+  const [duration, setDuration] = useState(5);\n  const [activeTemplate, setActiveTemplate] = useState("reel");
   const videoRef = useRef<HTMLVideoElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -76,7 +85,7 @@ export default function EditorPage() {
       ctx.textBaseline = "bottom";
       ctx.shadowColor = "rgba(0,0,0,.65)";
       ctx.shadowBlur = 12;
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = promoTemplates.find((template) => template.id === activeTemplate)?.accent || "#ffffff";
       const words = title.trim().split(/\s+/);
       const lines: string[] = [];
       let line = "";
@@ -168,7 +177,7 @@ export default function EditorPage() {
     }
   };
 
-  const audioItem = items.find((item) => item.kind === "audio");
+  const audioItem = items.find((item) => item.kind === "audio");\n  const applyTemplate = (template: PromoTemplate) => { setActiveTemplate(template.id); setTitle(template.title); setRatio(template.ratio); setDuration(template.duration); setStatus(template.name + " template selected. Import your own media to personalise it."); };
 
   return <main className="editorShell">
     <header className="editorTop">
@@ -190,10 +199,10 @@ export default function EditorPage() {
       </aside>
       <section className="workArea">
         <div className="workHeading"><div><span className="panelKicker">VIDEO EDITOR</span><h1>Untitled project</h1></div><span className="localBadge">● Local editing</span></div>
-        <div className="stage">
+        <section className="templatePicker">\n          <div className="templatePickerHead"><div><span className="panelKicker">QUICK START</span><h2>Choose a video template</h2><p>Pick a style to set up your project instantly</p></div><span className="templateCount">6 ready-made styles</span></div>\n          <div className="templateGrid">{promoTemplates.map((template) => <button key={template.id} className={"templateCard " + (activeTemplate === template.id ? "selectedTemplate" : "")} onClick={() => applyTemplate(template)}><span className="templateArtwork" style={{ background: template.background }}><span className="templateArtworkTag">{template.category}</span><strong>{template.title}</strong><small>YOUR BRAND</small></span><span className="templateCardInfo"><strong>{template.name}</strong><small>{template.description} · {template.ratio}</small></span>{activeTemplate === template.id && <span className="templateCheck">✓ Selected</span>}</button>)}</div>\n        </section>\n        <div className="stage">
           <div className={"previewFrame ratio" + ratio.replace(":", "-")}>
             {selected?.kind === "video" ? <video ref={videoRef} key={selected.id} src={selected.url} controls playsInline /> : selected?.kind === "image" ? <img ref={imageRef} key={selected.id} src={selected.url} alt="Selected media preview" /> : <div className="emptyStage"><div className="emptyPlay">▶</div><strong>Your preview appears here</strong><span>Import a video or image to begin</span><button onClick={() => fileInputRef.current?.click()}>＋ Import media</button></div>}
-            {selected && <div className="titleOverlay">{title}</div>}
+            {selected && <div className={"titleOverlay templateTitle " + "title-" + activeTemplate}>{title}</div>}
           </div>
         </div>
         <div className="editControls">
@@ -208,7 +217,7 @@ export default function EditorPage() {
           <div className="timelineTrack textTrack"><span className="trackLabel">TEXT</span><div className="textClip">{title || "Add a title using the text field above"}</div></div>
           <div className="statusLine"><span className={exporting ? "statusDot busy" : "statusDot"} />{status}</div>
         </section>
-        <p className="editorNotice">First working editor milestone: import, preview, title overlay and clip export. Multi-clip transitions, audio mixing, project cloud sync and advanced trimming are next.</p>
+        <p className="editorNotice">Templates are selectable and automatically set the title, aspect ratio and image duration. Add your own photos or videos to personalise the design. Multi-clip transitions, audio mixing and cloud projects are next.</p>
       </section>
     </div>
     <canvas ref={canvasRef} className="exportCanvas" />
